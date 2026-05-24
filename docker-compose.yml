@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: .  # Set context to root folder
+      dockerfile: app/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  frontend:
+    build:
+      context: .  # Set context to root folder
+      dockerfile: app/dashboard/Dockerfile
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
